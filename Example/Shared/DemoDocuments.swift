@@ -79,18 +79,20 @@ enum DemoDocuments {
                 MarkdownText(markdown)
                     .padding()
             }
-            .markdownTheme(.github) // or .docs
+            // or .docs
+            .markdownTheme(.github)
         }
     }
     ```
 
     ```kotlin
-    data class Note(val title: String, val words: Int)
+    data class Note(
+        val title: String,
+        val words: Int,
+    )
 
-    fun summary(notes: List<Note>): String {
-        val total = notes.sumOf { it.words }
-        return "${notes.size} notes, $total words"
-    }
+    fun total(notes: List<Note>) =
+        notes.sumOf { it.words }
     ```
 
     ```json
@@ -104,7 +106,7 @@ enum DemoDocuments {
 
     ```sh
     # Build and test the package
-    swift build --configuration release
+    swift build -c release
     swift test --parallel | tee test.log
     echo "Done in $SECONDS seconds"
     ```
