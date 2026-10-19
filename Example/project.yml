@@ -1,0 +1,66 @@
+name: MarkdownTextDemo
+options:
+  bundleIdPrefix: io.github.halilozel1903
+  deploymentTarget:
+    macOS: "14.0"
+    iOS: "17.0"
+packages:
+  MarkdownText:
+    path: ..
+targets:
+  MarkdownMac:
+    type: application
+    platform: macOS
+    sources:
+      - Shared
+      - Mac
+    dependencies:
+      - package: MarkdownText
+        product: MarkdownText
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.halilozel1903.MarkdownMac
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: MarkdownText
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.developer-tools
+        INFOPLIST_KEY_NSHumanReadableCopyright: "© 2026 Halil Özel"
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "6.0"
+        ENABLE_HARDENED_RUNTIME: NO
+        CODE_SIGN_IDENTITY: "-"
+  MarkdownPhone:
+    type: application
+    platform: iOS
+    sources:
+      - Shared
+      - Phone
+    dependencies:
+      - package: MarkdownText
+        product: MarkdownText
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.halilozel1903.MarkdownPhone
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: MarkdownText
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        COMPRESS_PNG_FILES: NO
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "6.0"
+        TARGETED_DEVICE_FAMILY: "1"
+schemes:
+  MarkdownMac:
+    build:
+      targets:
+        MarkdownMac: all
+    run:
+      config: Debug
+  MarkdownPhone:
+    build:
+      targets:
+        MarkdownPhone: all
+    run:
+      config: Debug
